@@ -1,7 +1,7 @@
 # Design Add and Search Words Data Structure
 
 ## Problem
-Implement `addWord` and `search`, where search supports `.` matching any single character.
+Implement `addWord` and `search`, where `search` supports `.` matching any single character.
 
 ## Intuition
 A Trie handles normal characters directly. When `.` appears, try every possible child recursively.
@@ -9,13 +9,57 @@ A Trie handles normal characters directly. When `.` appears, try every possible 
 ## Java
 ```java
 class WordDictionary {
-    static class Node{Node[]c=new Node[26];boolean end;}
-    Node root=new Node();
-    public void addWord(String w){Node n=root;for(char ch:w.toCharArray()){int i=ch-'a';if(n.c[i]==null)n.c[i]=new Node();n=n.c[i];}n.end=true;}
-    public boolean search(String w){return dfs(root,w,0);}
-    boolean dfs(Node n,String w,int i){if(n==null)return false;if(i==w.length())return n.end;char ch=w.charAt(i);if(ch=='.'){for(Node x:n.c)if(dfs(x,w,i+1))return true;return false;}return dfs(n.c[ch-'a'],w,i+1);}
+    static class Node {
+        Node[] children = new Node[26];
+        boolean isWord;
+    }
+
+    private final Node root = new Node();
+
+    public void addWord(String word) {
+        Node current = root;
+
+        for (char ch : word.toCharArray()) {
+            int index = ch - 'a';
+
+            if (current.children[index] == null) {
+                current.children[index] = new Node();
+            }
+
+            current = current.children[index];
+        }
+
+        current.isWord = true;
+    }
+
+    public boolean search(String word) {
+        return search(root, word, 0);
+    }
+
+    private boolean search(Node node, String word, int index) {
+        if (node == null) {
+            return false;
+        }
+
+        if (index == word.length()) {
+            return node.isWord;
+        }
+
+        char ch = word.charAt(index);
+
+        if (ch == '.') {
+            for (Node child : node.children) {
+                if (search(child, word, index + 1)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        return search(node.children[ch - 'a'], word, index + 1);
+    }
 }
 ```
 
 ## Complexity
-Insert O(L). Search O(26^L) worst case with wildcards, typically much smaller.
+Insert O(L). Search is O(26^L) in the worst case with wildcards, where L is the word length.
