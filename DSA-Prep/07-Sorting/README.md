@@ -11,4 +11,6 @@
 9. [Top K Frequent Elements](./09-top-k-frequent.md)
 10. [Relative Sort Array](./10-relative-sort-array.md)
 
+**Status: 10/10 completed.**
+
 [← Back to DSA Prep](../README.md)
