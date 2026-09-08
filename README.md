@@ -30,7 +30,7 @@ Each topic has its own directory with a topic index. Each problem has its own Ma
 | 10 | [Stack](./DSA-Prep/10-Stack/README.md) | 12 |
 | 11 | [Queue / Deque](./DSA-Prep/11-Queue-Deque/README.md) | 7 |
 | 12 | [Recursion](./DSA-Prep/12-Recursion/README.md) | 7 |
-| 13 | [Binary Tree](./DSA-Prep/13-Binary-Tree/README.md) | 15 |
+| 13 | [Binary Tree](./DSA-Prep/13-Binary-Tree/README.md) | 16 |
 | 14 | [Binary Search Tree](./DSA-Prep/14-BST/README.md) | 8 |
 | 15 | [Heap / Priority Queue](./DSA-Prep/15-Heap-PriorityQueue/README.md) | 10 |
 | 16 | [Greedy](./DSA-Prep/16-Greedy/README.md) | 13 |
@@ -46,7 +46,7 @@ Each topic has its own directory with a topic index. Each problem has its own Ma
 | 26 | [Segment Tree](./DSA-Prep/26-Segment-Tree/README.md) | 6 |
 | 27 | [Backtracking](./DSA-Prep/27-Backtracking/README.md) | 14 |
 
-**281 question entries** across the full revision list. Some problems intentionally appear in multiple topics because they represent multiple interview patterns.
+**283 question entries** across the full revision list. Some problems intentionally appear in multiple topics because they represent multiple interview patterns.
 
 ## Revision Workflow
 
