@@ -13,4 +13,6 @@
 11. [Subarray Product Less Than K](./11-subarray-product-less-than-k.md)
 12. [Minimum Window Substring](./12-minimum-window-substring.md)
 
+**Status: 12/12 completed.**
+
 [← Back to DSA Prep](../README.md)
