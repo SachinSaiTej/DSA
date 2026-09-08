@@ -1,12 +1,30 @@
 # Reverse Linked List
 
+## Problem
+Reverse a singly linked list and return its new head.
+
 ## Intuition
-Walk through the list while reversing each `next` pointer. Keep `prev` as the already-reversed portion.
+Keep three pointers: `prev`, `curr`, and `next`. Reverse `curr.next` one node at a time.
 
 ## Java
 ```java
-public ListNode reverseList(ListNode head){ListNode prev=null;while(head!=null){ListNode next=head.next;head.next=prev;prev=head;head=next;}return prev;}
+public ListNode reverseList(ListNode head) {
+    ListNode prev = null;
+    ListNode curr = head;
+
+    while (curr != null) {
+        ListNode next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    return prev;
+}
 ```
 
 ## Complexity
-O(n) time, O(1) space.
+Time O(n), space O(1).
+
+## Interview Point
+Never change `curr.next` before saving the original next node.
