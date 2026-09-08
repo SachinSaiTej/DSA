@@ -4,17 +4,56 @@
 Determine whether `n` nodes and the given undirected edges form one connected acyclic tree.
 
 ## Intuition
-A tree has exactly `n-1` edges. Then use DFS to ensure every node is reachable and no edge points back to a visited node other than its parent.
+A tree has exactly `n - 1` edges. Then use DFS to ensure every node is reachable and no edge points back to a visited node other than its parent.
 
 ## Java
 ```java
-public boolean validTree(int n,int[][] edges){
-    if(edges.length!=n-1)return false; List<Integer>[]g=new ArrayList[n];for(int i=0;i<n;i++)g[i]=new ArrayList<>();
-    for(int[]e:edges){g[e[0]].add(e[1]);g[e[1]].add(e[0]);}
-    boolean[]v=new boolean[n]; if(!dfs(g,0,-1,v))return false; for(boolean x:v)if(!x)return false; return true;
+public boolean validTree(int n, int[][] edges) {
+    if (edges.length != n - 1) {
+        return false;
+    }
+
+    List<Integer>[] graph = new ArrayList[n];
+    for (int i = 0; i < n; i++) {
+        graph[i] = new ArrayList<>();
+    }
+
+    for (int[] edge : edges) {
+        graph[edge[0]].add(edge[1]);
+        graph[edge[1]].add(edge[0]);
+    }
+
+    boolean[] visited = new boolean[n];
+
+    if (!dfs(graph, 0, -1, visited)) {
+        return false;
+    }
+
+    for (boolean nodeVisited : visited) {
+        if (!nodeVisited) {
+            return false;
+        }
+    }
+
+    return true;
 }
-boolean dfs(List<Integer>[]g,int u,int parent,boolean[]v){v[u]=true;for(int x:g[u]){if(x==parent)continue;if(v[x]||!dfs(g,x,u,v))return false;}return true;}
+
+private boolean dfs(List<Integer>[] graph, int node, int parent, boolean[] visited) {
+    visited[node] = true;
+
+    for (int neighbor : graph[node]) {
+        if (neighbor == parent) {
+            continue;
+        }
+
+        if (visited[neighbor] || !dfs(graph, neighbor, node, visited)) {
+            return false;
+        }
+    }
+
+    return true;
+}
 ```
 
 ## Complexity
-Time O(V+E), space O(V+E).
+Time O(V + E), space O(V + E).
