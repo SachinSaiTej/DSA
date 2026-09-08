@@ -1,12 +1,27 @@
 # Remove Duplicates from Sorted List
 
+## Problem
+Remove duplicate values from a sorted linked list so that each value appears only once.
+
 ## Intuition
-Because the list is sorted, duplicates are adjacent. If the next node has the same value, skip it; otherwise advance.
+Because the list is sorted, duplicate values are adjacent. If the current node and next node have the same value, skip the next node. Otherwise, move forward.
 
 ## Java
 ```java
-public ListNode deleteDuplicates(ListNode head){ListNode c=head;while(c!=null&&c.next!=null){if(c.val==c.next.val)c.next=c.next.next;else c=c.next;}return head;}
+public ListNode deleteDuplicates(ListNode head) {
+    ListNode current = head;
+
+    while (current != null && current.next != null) {
+        if (current.val == current.next.val) {
+            current.next = current.next.next;
+        } else {
+            current = current.next;
+        }
+    }
+
+    return head;
+}
 ```
 
 ## Complexity
-O(n) time, O(1) space.
+Time O(n), space O(1).
