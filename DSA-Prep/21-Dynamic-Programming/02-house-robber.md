@@ -4,14 +4,21 @@
 Maximize money robbed from houses when adjacent houses cannot both be robbed.
 
 ## Intuition
-At each house choose skip it or rob it. Keep only the best values for the previous two positions.
+At each house, choose whether to skip it or rob it. Keep only the best values for the previous two positions.
 
 ## Java
 ```java
 public int rob(int[] nums) {
-    int prev2=0, prev1=0;
-    for(int x:nums){ int cur=Math.max(prev1,prev2+x); prev2=prev1; prev1=cur; }
-    return prev1;
+    int prevTwo = 0;
+    int prevOne = 0;
+
+    for (int money : nums) {
+        int current = Math.max(prevOne, prevTwo + money);
+        prevTwo = prevOne;
+        prevOne = current;
+    }
+
+    return prevOne;
 }
 ```
 
