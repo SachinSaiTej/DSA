@@ -11,4 +11,6 @@
 9. [Range Addition](./09-range-addition.md)
 10. [Count Number of Nice Subarrays](./10-nice-subarrays.md)
 
+**Status: 10/10 completed.**
+
 [← Back to DSA Prep](../README.md)
