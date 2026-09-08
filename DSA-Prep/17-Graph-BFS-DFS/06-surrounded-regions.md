@@ -8,13 +8,45 @@ Only border-connected regions can survive. Mark those cells temporarily, flip re
 
 ## Java
 ```java
-public void solve(char[][] b){
-    int R=b.length,C=b[0].length;
-    for(int r=0;r<R;r++){mark(b,r,0);mark(b,r,C-1);}
-    for(int c=0;c<C;c++){mark(b,0,c);mark(b,R-1,c);}
-    for(int r=0;r<R;r++)for(int c=0;c<C;c++)if(b[r][c]=='O')b[r][c]='X';else if(b[r][c]=='#')b[r][c]='O';
+public void solve(char[][] board) {
+    int rows = board.length;
+    int cols = board[0].length;
+
+    for (int row = 0; row < rows; row++) {
+        mark(board, row, 0);
+        mark(board, row, cols - 1);
+    }
+
+    for (int col = 0; col < cols; col++) {
+        mark(board, 0, col);
+        mark(board, rows - 1, col);
+    }
+
+    for (int row = 0; row < rows; row++) {
+        for (int col = 0; col < cols; col++) {
+            if (board[row][col] == 'O') {
+                board[row][col] = 'X';
+            } else if (board[row][col] == '#') {
+                board[row][col] = 'O';
+            }
+        }
+    }
 }
-void mark(char[][]b,int r,int c){if(r<0||c<0||r==b.length||c==b[0].length||b[r][c]!='O')return;b[r][c]='#';mark(b,r+1,c);mark(b,r-1,c);mark(b,r,c+1);mark(b,r,c-1);}
+
+private void mark(char[][] board, int row, int col) {
+    if (row < 0 || col < 0 ||
+        row >= board.length || col >= board[0].length ||
+        board[row][col] != 'O') {
+        return;
+    }
+
+    board[row][col] = '#';
+
+    mark(board, row + 1, col);
+    mark(board, row - 1, col);
+    mark(board, row, col + 1);
+    mark(board, row, col - 1);
+}
 ```
 
 ## Complexity
