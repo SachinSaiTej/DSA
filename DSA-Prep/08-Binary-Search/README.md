@@ -13,4 +13,6 @@
 11. [Square Root of X](./11-sqrt-x.md)
 12. [Time Based Key-Value Store](./12-time-based-key-value-store.md)
 
+**Status: 12/12 completed.**
+
 [← Back to DSA Prep](../README.md)
